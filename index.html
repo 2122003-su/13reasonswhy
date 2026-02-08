@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>13 Reasons Why I Love You</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 25px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-weight: 300;
+      margin-bottom: 30px;
+    }
+
+    .reason-box {
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      padding: 25px;
+      border-radius: 20px;
+      font-size: 1.3em;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.5s ease;
+      margin-bottom: 25px;
+    }
+
+    .reason-box.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    button {
+      background: #ff4d6d;
+      border: none;
+      color: white;
+      font-size: 1.1em;
+      padding: 15px 30px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+    }
+
+    .counter {
+      margin-bottom: 15px;
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    .final {
+      font-size: 1.6em;
+      color: #ff4d6d;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>13 Reasons Why</h1>
+  <h2>I Love You ❤️</h2>
+  <h2>Day 2 of 5</h2>
+
+  <div class="counter" id="counter">Reason 0 of 13</div>
+
+  <div class="reason-box" id="reasonBox">
+    Click the button to start 💕
+  </div>
+
+  <button onclick="nextReason()">Reveal the next reason</button>
+</div>
+
+<script>
+  const reasons = [
+    "The way you smile instantly makes my whole day better.",
+    "You understand me in ways no one else ever has.",
+    "You make me laugh even when I don’t want to smile.",
+    "You are incredibly kind, even when no one is watching.",
+    "You make me feel safe just by being you.",
+    "You believe in me more than I believe in myself.",
+    "You turn ordinary moments into memories.",
+    "You’re beautiful — inside, outside, always.",
+    "You’re my comfort person.",
+    "You make love feel easy and real.",
+    "You inspire me to be better.",
+    "Life is brighter with you in it.",
+    "Because loving you feels like home."
+  ];
+
+  let index = 0;
+  const box = document.getElementById("reasonBox");
+  const counter = document.getElementById("counter");
+
+  function nextReason() {
+    if (index < reasons.length) {
+      box.classList.remove("show");
+      setTimeout(() => {
+        box.innerHTML = reasons[index];
+        box.classList.add("show");
+        counter.innerHTML = `Reason ${index + 1} of 13`;
+        index++;
+      }, 200);
+    } else {
+      box.innerHTML = "<span class='final'>And I would choose you every single time ❤️</span>";
+    }
+  }
+</script>
+
+</body>
+</html>
